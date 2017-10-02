@@ -23,11 +23,12 @@ func NewPager(page, perPage, total int, items ...interface{}) *Pager {
 		PerPage: perPage,
 		Count:   len(items),
 		Total:   total,
+		Items:   items,
 		Pages:   calcPages(total, perPage),
 	}
 	p.From = p.from()
 	p.To = p.to()
-	if p.Count == 0 {
+	if p.Items == nil {
 		p.Items = []interface{}{}
 	}
 	return p
