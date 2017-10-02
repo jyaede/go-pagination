@@ -25,3 +25,8 @@ func (q *Query) SetDefaults() {
 		q.PerPage = DefaultPerPage
 	}
 }
+
+//Skip helper to get number of items to skip for database queries
+func (q Query) Skip() int {
+	return (q.Page - 1) * q.PerPage
+}
